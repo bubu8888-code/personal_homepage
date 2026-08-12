@@ -98,4 +98,15 @@ function activateCase(index){
 }
 caseTabs.forEach((tab,index)=>tab.addEventListener('click',()=>activateCase(index)));
 activateCase(0);
+document.querySelectorAll('.work-toggle').forEach(toggle=>toggle.addEventListener('click',()=>{
+  const item=toggle.closest('.work-item');
+  const willOpen=!item.classList.contains('open');
+  document.querySelectorAll('.work-item').forEach(other=>{
+    const open=other===item&&willOpen;
+    other.classList.toggle('open',open);
+    const button=other.querySelector('.work-toggle');
+    button.setAttribute('aria-expanded',open?'true':'false');
+    button.querySelector('b').textContent=open?'−':'＋';
+  });
+}));
 document.getElementById('year').textContent=new Date().getFullYear();
