@@ -1,0 +1,42 @@
+[
+  {
+    "name": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "title": "Chen Jia Xian｜全球化遊戲運營・項目負責人",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "bodyHeight": 7632,
+    "brokenImages": [],
+    "resumeLinks": [
+      "assets/resume/Chen_Jia_Xian_Global_Game_Operations_visual.pdf",
+      "assets/resume/Chen_Jia_Xian_Global_Game_Operations_ATS.pdf"
+    ],
+    "activeVideos": 1,
+    "navVisible": "flex",
+    "h1Size": "208px",
+    "switchedVideo": true,
+    "editing": true,
+    "errors": []
+  },
+  {
+    "name": "mobile",
+    "width": 390,
+    "height": 844,
+    "title": "Chen Jia Xian｜全球化遊戲運營・項目負責人",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyHeight": 7628,
+    "brokenImages": [],
+    "resumeLinks": [
+      "assets/resume/Chen_Jia_Xian_Global_Game_Operations_visual.pdf",
+      "assets/resume/Chen_Jia_Xian_Global_Game_Operations_ATS.pdf"
+    ],
+    "activeVideos": 1,
+    "navVisible": "none",
+    "h1Size": "101.4px",
+    "switchedVideo": true,
+    "editing": true,
+    "errors": []
+  }
+]

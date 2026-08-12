@@ -1,0 +1,10 @@
+/* Content remains visible when JavaScript, observers, or motion are unavailable. */
+.reveal,
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.video-stage {
+  background: #101914 url("assets/images/japan-cafe-plan.png") center / cover no-repeat;
+}
