@@ -41,6 +41,7 @@ async function activateVideo(index,{initial=false}={}){
     brandData.metric.innerHTML=`${tab.dataset.metric}<small>${tab.dataset.metricLabel}</small>`;
   }
   videoStage?.classList.add('video-switching');
+  const playAttempt=next.play().catch(()=>null);
   const ready=await waitForVideoFrame(next);
   if(request!==videoRequest)return;
   if(!ready){
@@ -48,9 +49,7 @@ async function activateVideo(index,{initial=false}={}){
     videoStage?.classList.remove('video-switching');
     return;
   }
-  if(ready&&!reduce){
-    try{await Promise.race([next.play(),new Promise(resolve=>setTimeout(resolve,1200))]);}catch{}
-  }
+  if(ready)await Promise.race([playAttempt,new Promise(resolve=>setTimeout(resolve,1200))]);
   if(request!==videoRequest)return;
   videos.forEach((video,i)=>video.classList.toggle('active',i===index));
   activeVideo=index;
@@ -67,7 +66,7 @@ function showHeroIntro(duration=3600){
   if(hero.classList.contains('intro-complete'))return;
   hero.classList.add('intro-visible');
   clearTimeout(introTimer);
-  if(!reduce&&duration)introTimer=setTimeout(completeHeroIntro,duration);
+  if(duration)introTimer=setTimeout(completeHeroIntro,duration);
 }
 function hideHeroIntro(delay=0){
   clearTimeout(introTimer);
@@ -78,10 +77,7 @@ function completeHeroIntro(){
   hero?.classList.remove('intro-visible');
   hero?.classList.add('intro-complete');
 }
-if(reduce)hero?.classList.add('intro-visible');
-else{
-  showHeroIntro(4200);
-}
+showHeroIntro(reduce?1800:4200);
 
 if(!reduce){
   addEventListener('pointermove',event=>{
@@ -139,7 +135,7 @@ if(location.hash)addEventListener('load',()=>requestAnimationFrame(()=>navigateT
 document.addEventListener('visibilitychange',()=>{
   if(document.visibilityState==='visible'){
     const current=videos[activeVideo];
-    if(current&&!reduce)waitForVideoFrame(current).then(()=>current.play().catch(()=>{}));
+    if(current)waitForVideoFrame(current).then(()=>current.play().catch(()=>{}));
   }
 });
 
