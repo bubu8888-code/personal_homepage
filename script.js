@@ -26,7 +26,7 @@ function activateVideo(index){
   }
   if(!reduce) videos[index].play().catch(()=>{});
 }
-tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{activateVideo(i);hideHeroIntro(350);}));
+tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{activateVideo(i);hideHeroIntro();}));
 activateVideo(0);
 
 let introTimer;
@@ -43,11 +43,6 @@ function hideHeroIntro(delay=0){
 if(reduce)hero?.classList.add('intro-visible');
 else{
   showHeroIntro(4200);
-  hero?.addEventListener('pointerenter',()=>showHeroIntro(3600));
-  hero?.addEventListener('pointerleave',()=>hideHeroIntro(500));
-  hero?.addEventListener('focusin',()=>showHeroIntro(0));
-  hero?.addEventListener('focusout',()=>hideHeroIntro(500));
-  hero?.addEventListener('click',event=>{if(!event.target.closest('a,button'))showHeroIntro(3000)});
 }
 
 if(!reduce){
