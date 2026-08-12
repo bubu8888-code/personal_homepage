@@ -116,6 +116,26 @@ function updateChapter(){
 addEventListener('scroll',()=>{if(!chapterFrame)chapterFrame=requestAnimationFrame(updateChapter)},{passive:true});
 addEventListener('resize',updateChapter,{passive:true});
 updateChapter();
+function getSectionScrollTop(target){
+  if(!target||target.id==='top')return 0;
+  const headerHeight=header?.getBoundingClientRect().height||0;
+  const paddingTop=parseFloat(getComputedStyle(target).paddingTop)||0;
+  return Math.max(0,target.offsetTop+paddingTop-headerHeight-20);
+}
+function navigateToSection(hash,{instant=false}={}){
+  const target=document.querySelector(hash);
+  if(!target)return;
+  scrollTo({top:getSectionScrollTop(target),behavior:instant||reduce?'auto':'smooth'});
+}
+document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
+  const hash=link.getAttribute('href');
+  if(!hash||hash==='#')return;
+  event.preventDefault();
+  history.pushState(null,'',hash);
+  navigateToSection(hash);
+}));
+addEventListener('popstate',()=>navigateToSection(location.hash||'#top'));
+if(location.hash)addEventListener('load',()=>requestAnimationFrame(()=>navigateToSection(location.hash,{instant:true})),{once:true});
 document.addEventListener('visibilitychange',()=>{
   if(document.visibilityState==='visible'){
     const current=videos[activeVideo];
