@@ -1,4 +1,4 @@
-const videos=[...document.querySelectorAll('.hero-video')];
+const heroVideo=document.querySelector('.hero-video');
 const tabs=[...document.querySelectorAll('.brand-tab')];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let activeVideo=0;
@@ -9,10 +9,8 @@ const brandData={
   market:document.querySelector('.brand-market'),name:document.querySelector('.brand-name'),
   summary:document.querySelector('.brand-summary'),metric:document.querySelector('.brand-metric')
 };
-videos.forEach(video=>{
-  video.addEventListener('loadeddata',()=>{if(video.classList.contains('active'))videoStage?.classList.add('video-ready')});
-  video.addEventListener('error',()=>video.classList.add('video-error'));
-});
+heroVideo?.addEventListener('loadeddata',()=>videoStage?.classList.add('video-ready'));
+heroVideo?.addEventListener('error',()=>heroVideo.classList.add('video-error'));
 
 function waitForVideoFrame(video,timeout=3500){
   if(video.readyState>=2)return Promise.resolve(true);
@@ -29,33 +27,32 @@ function waitForVideoFrame(video,timeout=3500){
 }
 async function activateVideo(index,{initial=false}={}){
   const request=++videoRequest;
-  const next=videos[index];
-  const previous=videos[activeVideo];
-  if(!next)return;
-  tabs.forEach((tab,i)=>tab.classList.toggle('active',i===index));
   const tab=tabs[index];
+  if(!heroVideo||!tab)return;
+  tabs.forEach((tab,i)=>tab.classList.toggle('active',i===index));
   if(tab&&brandData.market){
     brandData.market.textContent=tab.dataset.market;
     brandData.name.textContent=tab.dataset.name;
     brandData.summary.textContent=tab.dataset.summary;
     brandData.metric.innerHTML=`${tab.dataset.metric}<small>${tab.dataset.metricLabel}</small>`;
   }
+  if(index===activeVideo&&heroVideo.readyState>=2){heroVideo.play().catch(()=>{});return;}
   videoStage?.classList.add('video-switching');
-  const playAttempt=next.play().catch(()=>null);
-  const ready=await waitForVideoFrame(next);
+  heroVideo.classList.remove('video-error');
+  heroVideo.src=tab.dataset.src;
+  heroVideo.load();
+  const ready=await waitForVideoFrame(heroVideo,5000);
   if(request!==videoRequest)return;
   if(!ready){
-    tabs.forEach((tab,i)=>tab.classList.toggle('active',i===activeVideo));
     videoStage?.classList.remove('video-switching');
+    heroVideo.classList.add('video-error');
     return;
   }
-  if(ready)await Promise.race([playAttempt,new Promise(resolve=>setTimeout(resolve,1200))]);
+  try{await heroVideo.play();}catch{}
   if(request!==videoRequest)return;
-  videos.forEach((video,i)=>video.classList.toggle('active',i===index));
   activeVideo=index;
-  if(ready)videoStage?.classList.add('video-ready');
+  videoStage?.classList.add('video-ready');
   videoStage?.classList.remove('video-switching');
-  if(previous&&previous!==next)previous.pause();
 }
 tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{completeHeroIntro();activateVideo(i);}));
 activateVideo(0,{initial:true});
@@ -134,8 +131,7 @@ addEventListener('popstate',()=>navigateToSection(location.hash||'#top'));
 if(location.hash)addEventListener('load',()=>requestAnimationFrame(()=>navigateToSection(location.hash,{instant:true})),{once:true});
 document.addEventListener('visibilitychange',()=>{
   if(document.visibilityState==='visible'){
-    const current=videos[activeVideo];
-    if(current)waitForVideoFrame(current).then(()=>current.play().catch(()=>{}));
+    if(heroVideo)waitForVideoFrame(heroVideo).then(()=>heroVideo.play().catch(()=>{}));
   }
 });
 
