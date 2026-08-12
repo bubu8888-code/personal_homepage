@@ -2,18 +2,53 @@ const videos=[...document.querySelectorAll('.hero-video')];
 const tabs=[...document.querySelectorAll('.brand-tab')];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let activeVideo=0;
-let videoTimer;
+const videoStage=document.querySelector('.video-stage');
+const hero=document.querySelector('.hero');
+const brandData={
+  market:document.querySelector('.brand-market'),name:document.querySelector('.brand-name'),
+  summary:document.querySelector('.brand-summary'),metric:document.querySelector('.brand-metric')
+};
+videos.forEach(video=>{
+  video.addEventListener('canplay',()=>videoStage?.classList.add('video-ready'),{once:true});
+  video.addEventListener('error',()=>video.classList.add('video-error'));
+});
 
 function activateVideo(index){
   activeVideo=index;
   videos.forEach((video,i)=>{video.classList.toggle('active',i===index); if(i!==index) video.pause();});
   tabs.forEach((tab,i)=>tab.classList.toggle('active',i===index));
+  const tab=tabs[index];
+  if(tab&&brandData.market){
+    brandData.market.textContent=tab.dataset.market;
+    brandData.name.textContent=tab.dataset.name;
+    brandData.summary.textContent=tab.dataset.summary;
+    brandData.metric.innerHTML=`${tab.dataset.metric}<small>${tab.dataset.metricLabel}</small>`;
+  }
   if(!reduce) videos[index].play().catch(()=>{});
-  clearInterval(videoTimer);
-  if(!reduce) videoTimer=setInterval(()=>activateVideo((activeVideo+1)%videos.length),8000);
 }
-tabs.forEach((tab,i)=>tab.addEventListener('click',()=>activateVideo(i)));
+tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{activateVideo(i);hideHeroIntro(350);}));
 activateVideo(0);
+
+let introTimer;
+function showHeroIntro(duration=3600){
+  if(!hero)return;
+  hero.classList.add('intro-visible');
+  clearTimeout(introTimer);
+  if(!reduce&&duration)introTimer=setTimeout(()=>hero.classList.remove('intro-visible'),duration);
+}
+function hideHeroIntro(delay=0){
+  clearTimeout(introTimer);
+  introTimer=setTimeout(()=>hero?.classList.remove('intro-visible'),delay);
+}
+if(reduce)hero?.classList.add('intro-visible');
+else{
+  showHeroIntro(4200);
+  hero?.addEventListener('pointerenter',()=>showHeroIntro(3600));
+  hero?.addEventListener('pointerleave',()=>hideHeroIntro(500));
+  hero?.addEventListener('focusin',()=>showHeroIntro(0));
+  hero?.addEventListener('focusout',()=>hideHeroIntro(500));
+  hero?.addEventListener('click',event=>{if(!event.target.closest('a,button'))showHeroIntro(3000)});
+}
 
 if(!reduce){
   addEventListener('pointermove',event=>{
@@ -34,32 +69,33 @@ addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>40),{pa
 
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const chapterLinks=[...document.querySelectorAll('[data-chapter-link]')];
+const chapterObserver=new IntersectionObserver(entries=>{
+  const current=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+  if(!current)return;
+  chapterLinks.forEach(link=>link.classList.toggle('active',link.dataset.chapterLink===current.target.dataset.chapter));
+},{rootMargin:'-30% 0px -45%',threshold:[0,.15,.35,.6]});
+document.querySelectorAll('[data-chapter]').forEach(section=>chapterObserver.observe(section));
+
+const systemButtons=[...document.querySelectorAll('.system-node[data-system]')];
+const systemDetail=document.querySelector('.system-detail');
+systemButtons.forEach((button,index)=>button.addEventListener('click',()=>{
+  systemButtons.forEach(item=>item.classList.toggle('active',item===button));
+  if(!systemDetail)return;
+  systemDetail.querySelector('span').textContent=`SELECTED / ${String(index+1).padStart(2,'0')}`;
+  systemDetail.querySelector('strong').textContent=button.dataset.system;
+  systemDetail.querySelector('p').textContent=button.dataset.detail;
+  const flow=document.querySelector('.system-flow');
+  const steps=(button.dataset.steps||'').split('|');
+  if(flow&&steps.length){flow.innerHTML=steps.map((step,stepIndex)=>`${stepIndex?'<i>→</i>':''}<span>${step}</span>`).join('');}
+}));
+const caseTabs=[...document.querySelectorAll('.case-tab')];
+const caseCards=[...document.querySelectorAll('.case-deck .case')];
+function activateCase(index){
+  caseTabs.forEach((tab,i)=>{tab.classList.toggle('active',i===index);tab.setAttribute('aria-selected',i===index?'true':'false')});
+  caseCards.forEach((card,i)=>{card.classList.toggle('case-active',i===index);card.setAttribute('aria-hidden',i===index?'false':'true')});
+}
+caseTabs.forEach((tab,index)=>tab.addEventListener('click',()=>activateCase(index)));
+activateCase(0);
 document.getElementById('year').textContent=new Date().getFullYear();
-
-const root=document.documentElement;
-const editables=[...document.querySelectorAll('[data-edit-id]')];
-const toolbar=document.querySelector('.editor-toolbar');
-const toggle=document.querySelector('.edit-toggle');
-const status=document.querySelector('.editor-status');
-const baseKey=`chen-jia-xian-homepage-edits:${location.pathname}`;
-const versionKey=`${baseKey}:${root.dataset.editVersion}`;
-let editing=false;
-
-function savedData(){try{return JSON.parse(localStorage.getItem(versionKey)||localStorage.getItem(baseKey)||'{}')}catch{return {}}}
-function restore(){const data=savedData();editables.forEach(el=>{if(data[el.dataset.editId]!==undefined)el.innerHTML=data[el.dataset.editId]})}
-function save(){const data={};editables.forEach(el=>data[el.dataset.editId]=el.innerHTML);localStorage.setItem(versionKey,JSON.stringify(data));localStorage.setItem(baseKey,JSON.stringify(data));status.textContent='已儲存';setTimeout(()=>status.textContent='',1200)}
-function setEditing(value){editing=value;document.body.classList.toggle('editing',editing);toolbar.classList.toggle('open',editing);editables.forEach(el=>el.contentEditable=editing?'true':'false');toggle.textContent=editing?'完成':'編輯';if(!editing)save()}
-toggle.addEventListener('click',()=>setEditing(!editing));
-document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='s'){event.preventDefault();save()}if(event.key.toLowerCase()==='e'&&!event.metaKey&&!event.ctrlKey&&!event.target.closest('[contenteditable="true"],input,textarea'))setEditing(!editing)});
-
-document.querySelector('.export-html').addEventListener('click',()=>{
-  save();
-  const clone=document.documentElement.cloneNode(true);
-  clone.dataset.editVersion=`export-${Date.now()}`;
-  clone.querySelector('body').classList.remove('editing');
-  clone.querySelector('.editor-toolbar')?.classList.remove('open');
-  clone.querySelectorAll('[contenteditable]').forEach(el=>el.setAttribute('contenteditable','false'));
-  const blob=new Blob(['<!doctype html>\n'+clone.outerHTML],{type:'text/html;charset=utf-8'});
-  const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='chen-jia-xian-homepage-edited.html';link.click();URL.revokeObjectURL(link.href);
-});
-restore();

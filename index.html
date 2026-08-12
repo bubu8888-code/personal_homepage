@@ -1,9 +1,12 @@
 <!doctype html>
-<html lang="zh-Hant" data-edit-version="chen-jia-xian-home-v2">
+<html lang="zh-Hant" data-edit-version="chen-jia-xian-home-v3">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Chen Jia Xian｜全球化遊戲運營與項目負責人，專注泰國、日本棋牌市場、品牌運營與跨部門落地。">
+  <meta property="og:title" content="Chen Jia Xian｜全球化遊戲運營・項目負責人">
+  <meta property="og:description" content="跨市場遊戲運營、品牌策略、數據活動與項目管理作品集。">
+  <meta property="og:type" content="website">
   <meta name="theme-color" content="#07100d">
   <title>Chen Jia Xian｜全球化遊戲運營・項目負責人</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307100d'/%3E%3Ctext x='7' y='42' font-size='22' font-family='Arial' font-weight='700' fill='%23c9ff45'%3ECJX%3C/text%3E%3C/svg%3E">
@@ -13,12 +16,12 @@
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
 
-  <div class="edit-hotzone" aria-hidden="true"></div>
-  <div class="editor-toolbar" aria-label="頁面文字編輯工具">
-    <button class="edit-toggle" type="button">編輯</button>
-    <button class="export-html" id="exportHtml" type="button">導出 HTML</button>
-    <span class="editor-status" aria-live="polite"></span>
-  </div>
+  <nav class="chapter-rail" aria-label="頁面章節">
+    <a href="#top" data-chapter-link="top"><span>01</span><b>首頁</b></a>
+    <a href="#cases" data-chapter-link="cases"><span>02</span><b>案例</b></a>
+    <a href="#experience" data-chapter-link="experience"><span>03</span><b>履歷</b></a>
+    <a href="#contact" data-chapter-link="contact"><span>04</span><b>聯絡</b></a>
+  </nav>
 
   <header class="site-header">
     <a class="wordmark" href="#top" aria-label="Chen Jia Xian 首頁">CJX<span>/</span></a>
@@ -29,17 +32,18 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero chapter" id="top" data-chapter="top" aria-labelledby="hero-title">
       <div class="video-stage" aria-hidden="true">
-        <video class="hero-video active" muted loop autoplay playsinline preload="auto" poster="assets/images/japan-cafe-plan.png"><source src="assets/videos/vv-japan-internet-cafe.mp4" type="video/mp4"></video>
-        <video class="hero-video" muted loop playsinline preload="metadata"><source src="assets/videos/mp-brand.mp4" type="video/mp4"></video>
-        <video class="hero-video" muted loop playsinline preload="metadata"><source src="assets/videos/lp-brand.mp4" type="video/mp4"></video>
-        <video class="hero-video" muted loop playsinline preload="metadata"><source src="assets/videos/vp-brand.mp4" type="video/mp4"></video>
+        <div class="video-fallback"><span>CJX / GLOBAL OPERATIONS</span><small>品牌影片載入中</small></div>
+        <video class="hero-video active" muted loop autoplay playsinline preload="auto"><source src="assets/videos/vv-web.m4v" type="video/mp4">影片暫時無法播放</video>
+        <video class="hero-video" muted loop playsinline preload="metadata"><source src="assets/videos/mp-web.m4v" type="video/mp4"></video>
+        <video class="hero-video" muted loop playsinline preload="metadata"><source src="assets/videos/lp-web.m4v" type="video/mp4"></video>
+        <video class="hero-video" muted loop playsinline preload="metadata"><source src="assets/videos/vp-web.m4v" type="video/mp4"></video>
         <div class="video-shade"></div><div class="film-grain"></div>
       </div>
 
-      <div class="hero-kicker reveal"><span>GLOBAL GAME OPERATIONS</span><span>TAIWAN · ASIA</span></div>
-      <div class="hero-grid">
+      <div class="hero-kicker hero-identity"><span>GLOBAL GAME OPERATIONS</span><span>TAIWAN · ASIA</span></div>
+      <div class="hero-grid hero-identity">
         <div class="hero-title-wrap reveal">
           <p class="eyebrow" data-edit-id="hero-eyebrow">項目負責人 / PRODUCT & OPERATIONS LEAD</p>
           <h1 id="hero-title" data-edit-id="hero-title">Chen Jia Xian</h1>
@@ -51,27 +55,27 @@
         </div>
       </div>
 
-      <div class="brand-switcher" aria-label="品牌影片切換">
-        <button class="brand-tab active" data-video="0" type="button"><span>01</span>VIVA（VV）</button>
-        <button class="brand-tab" data-video="1" type="button"><span>02</span>Million Poker（MP）</button>
-        <button class="brand-tab" data-video="2" type="button"><span>03</span>Lucky Poker（LP）</button>
-        <button class="brand-tab" data-video="3" type="button"><span>04</span>Victory Poker（VP）</button>
+      <div class="hero-projects">
+        <div class="brand-data" aria-live="polite">
+          <span class="brand-market">JAPAN / INTERNET CAFE</span><strong class="brand-name">VIVA（VV）</strong><p class="brand-summary">品牌策略、拓店規劃、店內活動與項目統籌</p><b class="brand-metric">JPY 5–6B <small>品牌流水</small></b>
+        </div>
+        <div class="brand-switcher" aria-label="品牌影片切換">
+          <button class="brand-tab active" data-video="0" data-market="JAPAN / INTERNET CAFE" data-name="VIVA（VV）" data-summary="品牌策略、拓店規劃、店內活動與項目統籌" data-metric="JPY 5–6B" data-metric-label="品牌流水" type="button"><span>01</span>VIVA（VV）</button>
+          <button class="brand-tab" data-video="1" data-market="THAILAND / POKER" data-name="Million Poker（MP）" data-summary="數據拆解、活動策略、代理合作與跨部門推進" data-metric="THB 250M" data-metric-label="MP／LP 每月平均流水" type="button"><span>02</span>Million Poker（MP）</button>
+          <button class="brand-tab" data-video="2" data-market="THAILAND / POKER" data-name="Lucky Poker（LP）" data-summary="品牌運營、活動機制與本地市場協作" data-metric="THB 250M" data-metric-label="MP／LP 每月平均流水" type="button"><span>03</span>Lucky Poker（LP）</button>
+          <button class="brand-tab" data-video="3" data-market="JAPAN / POKER" data-name="Victory Poker（VP）" data-summary="日本市場產品規劃、品牌運營與落地執行" data-metric="CNY 12M" data-metric-label="約 JPY 300M 流水" type="button"><span>04</span>Victory Poker（VP）</button>
+        </div>
       </div>
     </section>
 
-    <section class="statement section-shell" aria-labelledby="statement-title">
-      <p class="section-index">01 / APPROACH</p>
-      <h2 id="statement-title" class="statement-copy" data-edit-id="approach-statement">從使用者行為與市場結構出發，將數據轉為活動策略，將策略拆成產品、商務、技術與運營可以共同完成的路徑。</h2>
-      <div class="proof-strip reveal">
-        <article><strong>THB 250M</strong><span>MP／LP 每月平均流水</span></article>
-        <article><strong>CNY 12M</strong><span>Victory Poker 流水（約 JPY 300M）</span></article>
-        <article><strong>JPY 5–6B</strong><span>VIVA 流水</span></article>
-        <article><strong>15</strong><span>人團隊管理</span></article>
+    <section class="cases section-shell chapter" id="cases" data-chapter="cases" aria-labelledby="cases-title">
+      <div class="section-heading"><div><p class="section-index">01 / SELECTED CASES</p><h2 id="cases-title" data-edit-id="cases-title">精選案例</h2></div><p data-edit-id="cases-note">以問題、角色、方法與結果，呈現策略如何進入產品與日常運營。</p></div>
+      <div class="case-tabs" role="tablist" aria-label="案例切換">
+        <button class="case-tab active" type="button" data-case="0"><span>01</span>泰國品牌運營</button>
+        <button class="case-tab" type="button" data-case="1"><span>02</span>日本網咖 VIVA</button>
+        <button class="case-tab" type="button" data-case="2"><span>03</span>系統需求設計</button>
       </div>
-    </section>
-
-    <section class="cases section-shell" id="cases" aria-labelledby="cases-title">
-      <div class="section-heading"><div><p class="section-index">02 / SELECTED CASES</p><h2 id="cases-title" data-edit-id="cases-title">以案例說明<br>我如何推動運營。</h2></div><p data-edit-id="cases-note">每個案例聚焦問題、角色、方法與已確認結果；不以空泛標籤取代實際工作。</p></div>
+      <div class="case-deck">
 
       <article class="case case-featured reveal">
         <div class="case-visual strategy-visual" aria-label="泰國產品運營策略圖示">
@@ -85,49 +89,69 @@
           </div>
           <div class="visual-result"><span>YOY</span><b>+22.73%</b> 新增 <b>+22.20%</b> 活躍</div>
         </div>
-        <div class="case-copy"><p class="case-no">CASE 01 · THAILAND</p><h3 data-edit-id="case-th-title">Million Poker／Lucky Poker</h3><p class="case-lede" data-edit-id="case-th-summary">依 Million Poker（MP）活躍、投注與注單數據，拆解德州撲克、泰式骰寶、幸運輪盤的不同成長問題。</p><dl><div><dt>我的角色</dt><dd data-edit-id="case-th-role">泰國兩品牌項目負責人；統籌策略、代理合作與活動落地。</dd></div><div><dt>方法</dt><dd data-edit-id="case-th-method">規劃充值贈送、負盈利返還、連中／連輸與流水返利，並提出階梯式 GGR 返點與獨家客製合作。</dd></div><div><dt>規模與結果</dt><dd data-edit-id="case-th-result-positive">MP／LP 合計每月平均流水 2.5 億泰銖；年度同比新增 +22.73%、活躍 +22.20%。</dd></div></dl></div>
+        <div class="case-copy"><p class="case-no">CASE 01 · THAILAND</p><h3 data-edit-id="case-th-title">Million Poker／Lucky Poker</h3><p class="case-lede" data-edit-id="case-th-summary">依 Million Poker（MP）活躍、投注與注單數據，拆解德州撲克、泰式骰寶、幸運輪盤的不同成長問題。</p><dl><div><dt>個人負責</dt><dd data-edit-id="case-th-role">項目策略、代理合作、活動機制與跨部門推進。</dd></div><div><dt>方法</dt><dd data-edit-id="case-th-method">規劃充值贈送、負盈利返還、連中／連輸與流水返利，並提出階梯式 GGR 返點與獨家客製合作。</dd></div><div><dt>規模與結果</dt><dd data-edit-id="case-th-result-positive">MP／LP 合計每月平均流水 2.5 億泰銖；年度同比新增 +22.73%、活躍 +22.20%。</dd></div></dl></div>
       </article>
 
       <div class="case-pair">
         <article class="case case-dark reveal">
-          <div class="case-visual cafe-visual">
-            <div class="cafe-grid" aria-hidden="true"></div><span class="cafe-pulse p1"></span><span class="cafe-pulse p2"></span><span class="cafe-pulse p3"></span>
-            <div class="cafe-top"><span>VIVA / JAPAN</span><b>50–60B JPY</b></div>
-            <div class="cafe-flow"><span>拓店</span><i>→</i><span>店內活動</span><i>→</i><span>穩定性</span><i>→</i><span>成本優化</span></div>
+          <div class="case-visual japan-visual" aria-label="日本網咖 VIVA 區域拓展示意圖">
+            <div class="japan-meta"><span>VIVA / JAPAN</span><b>AREA DEVELOPMENT</b></div>
+            <svg class="japan-map" viewBox="0 0 520 330" role="img" aria-label="日本地圖與區域鎖定動畫">
+              <path class="map-island hokkaido" d="M400 44l35-16 38 12 16 28-18 25-38-3-31-20z"/>
+              <path class="map-island honshu" d="M392 92l28 18-3 25-35 16-22 26-34 9-25 31-39 11-29 29-43 5-19-14 25-20 31-7 28-24 35-12 25-31 35-12 20-27z"/>
+              <path class="map-island shikoku" d="M245 242l42-9 19 13-15 18-43 2-13-11z"/>
+              <path class="map-island kyushu" d="M167 252l30 3 20 24-13 34-31 7-23-24z"/>
+              <g class="region-lock lock-1" transform="translate(408 73)"><circle r="17"/><path d="M0-7a7 7 0 0 0-7 7c0 7 7 14 7 14S7 7 7 0a7 7 0 0 0-7-7zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></g>
+              <g class="region-lock lock-2" transform="translate(350 155)"><circle r="17"/><path d="M0-7a7 7 0 0 0-7 7c0 7 7 14 7 14S7 7 7 0a7 7 0 0 0-7-7zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></g>
+              <g class="region-lock lock-3" transform="translate(278 220)"><circle r="17"/><path d="M0-7a7 7 0 0 0-7 7c0 7 7 14 7 14S7 7 7 0a7 7 0 0 0-7-7zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></g>
+              <g class="region-lock lock-4" transform="translate(183 282)"><circle r="17"/><path d="M0-7a7 7 0 0 0-7 7c0 7 7 14 7 14S7 7 7 0a7 7 0 0 0-7-7zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></g>
+            </svg>
+            <div class="japan-steps"><span><b>01</b>區域評估</span><span><b>02</b>拓店規劃</span><span><b>03</b>店內活動</span><span><b>04</b>穩定與成本</span></div>
           </div>
-          <div class="case-copy"><p class="case-no">CASE 02 · JAPAN</p><h3 data-edit-id="case-vv-title">日本網咖 VIVA（VV）</h3><p data-edit-id="case-vv-summary">規劃拓店、店內活動、產品穩定性與成本優化，建立更適合日本網咖場景的運營方式；品牌流水約 50–60 億日圓。</p><p class="case-role" data-edit-id="case-vv-role">角色：品牌項目負責人／團隊管理</p></div>
+          <div class="case-copy"><p class="case-no">CASE 02 · JAPAN</p><h3 data-edit-id="case-vv-title">日本網咖 VIVA（VV）</h3><p data-edit-id="case-vv-summary">規劃拓店、店內活動、產品穩定性與成本優化，建立更適合日本網咖場景的運營方式；品牌流水約 50–60 億日圓。</p><p class="case-role" data-edit-id="case-vv-role">個人負責：品牌策略、項目統籌與團隊管理</p></div>
         </article>
         <article class="case case-paper reveal">
-          <div class="case-visual system-visual" aria-label="五套系統文件架構">
-            <div class="system-hub"><small>REQUIREMENT</small><strong>產品規格</strong></div>
-            <div class="system-node n1">代理</div><div class="system-node n2">VIP</div><div class="system-node n3">帳號交易</div><div class="system-node n4">信用貸款</div><div class="system-node n5">自動派彩</div>
+          <div class="case-visual system-visual" aria-label="五套系統需求文件流程摘要">
+            <div class="system-meta"><span>05 SYSTEMS</span><b>脫敏流程摘要</b></div>
+            <div class="system-tabs" role="tablist" aria-label="選擇系統文件">
+              <button class="system-node active" type="button" data-system="代理系統" data-detail="代理層級、返點與帳務流程" data-steps="角色權限|層級規則|返點帳務|異常處理">代理</button>
+              <button class="system-node" type="button" data-system="VIP 系統" data-detail="會員分級、特權與升降級規則" data-steps="會員分級|特權規則|升降級|驗收情境">VIP</button>
+              <button class="system-node" type="button" data-system="帳號交易" data-detail="刊登、審核、交易與異常處理" data-steps="帳號評估|刊登審核|交易交付|回收異常">帳號交易</button>
+              <button class="system-node" type="button" data-system="信用貸款" data-detail="借款、額度、還款與風險流程" data-steps="借款申請|額度審核|放款流程|還款處理">信用貸款</button>
+              <button class="system-node" type="button" data-system="自動派彩" data-detail="派彩條件、欄位校驗與例外補償" data-steps="派彩條件|資料校驗|自動執行|例外補償">自動派彩</button>
+            </div>
+            <div class="system-detail" aria-live="polite"><span>SELECTED / 01</span><strong>代理系統</strong><p>代理層級、返點與帳務流程</p></div>
+            <div class="system-flow" aria-label="目前系統流程">
+              <span>角色權限</span><i>→</i><span>層級規則</span><i>→</i><span>返點帳務</span><i>→</i><span>異常處理</span>
+            </div>
           </div>
-          <div class="case-copy"><p class="case-no">CASE 03 · SYSTEM DESIGN</p><h3 data-edit-id="case-docs-title">五套系統需求文件</h3><p data-edit-id="case-docs-summary">於 Rong Guang 擔任 PM 助理期間，撰寫並持續迭代代理、VIP、帳號交易、玩家信用貸款與自動派彩需求文件。</p><p class="case-role" data-edit-id="case-docs-role">涵蓋前後台流程、角色權限、核心規則、欄位校驗與異常情境。</p></div>
+          <div class="case-copy"><p class="case-no">CASE 03 · SYSTEM DESIGN</p><h3 data-edit-id="case-docs-title">五套系統需求文件</h3><p data-edit-id="case-docs-summary">於 Rong Guang 擔任 PM 助理期間，撰寫並持續迭代代理、VIP、帳號交易、玩家信用貸款與自動派彩需求文件。</p><p class="case-role" data-edit-id="case-docs-role">個人負責：流程、權限、核心規則、欄位校驗與異常情境；可於面談提供脫敏樣本。</p></div>
         </article>
-      </div>
+      </div></div>
     </section>
 
-    <section class="capabilities section-shell" aria-labelledby="cap-title">
-      <p class="section-index">03 / CAPABILITIES</p><h2 id="cap-title" data-edit-id="cap-title">不是技能標籤，<br>而是可交付的工作能力。</h2>
-      <div class="cap-grid">
+    <section class="experience section-shell chapter" id="experience" data-chapter="experience" aria-labelledby="exp-title">
+      <div class="profile-head"><div><p class="section-index">02 / PROFILE</p><h2 id="exp-title">能力與經歷</h2></div><p class="profile-intro">跨市場運營、數據活動策略與多職能團隊管理，將需求一路推進到可驗證的交付結果。</p></div>
+      <div class="cap-grid profile-cap-grid">
         <article class="reveal"><span>01</span><h3>國際市場運營</h3><p data-edit-id="cap-market">負責泰國、日本棋牌項目，具阿聯酋、馬爾他、日本與菲律賓跨文化工作經驗。</p></article>
-        <article class="reveal"><span>02</span><h3>數據與活動策略</h3><p data-edit-id="cap-data">以活躍、投注、注單與 GGR 等業務資料拆解問題，對應不同產品設計活動與代理方案。</p></article>
+        <article class="reveal"><span>02</span><h3>數據與活動策略</h3><p data-edit-id="cap-data">以活躍、投注、注單與 GGR 拆解問題，對應不同產品設計活動與代理方案。</p></article>
         <article class="reveal"><span>03</span><h3>項目與團隊管理</h3><p data-edit-id="cap-project">管理 15 人團隊，串聯技術、產品、商務與運營，掌握需求、排程、品質與預算。</p></article>
       </div>
-    </section>
-
-    <section class="experience section-shell" id="experience" aria-labelledby="exp-title">
-      <div class="section-heading"><div><p class="section-index">04 / EXPERIENCE</p><h2 id="exp-title">從需求到市場，<br>逐步擴大負責範圍。</h2></div></div>
       <ol class="timeline">
         <li class="reveal"><time>2021 — NOW</time><div><h3>Royce Tech. · 項目負責人</h3><p data-edit-id="exp-royce">2023 年晉升；統籌 Million Poker、Lucky Poker、Victory Poker 與 VIVA 四品牌及 15 人團隊。Victory Poker 流水 1,200 萬人民幣（約 3 億日圓）。</p></div></li>
         <li class="reveal"><time>2020</time><div><h3>DBS Technology · 產品運營副理</h3><p data-edit-id="exp-dbs">從 0 到 1 建立兩個 ToC 品牌，涵蓋平台建立、產品規劃與上線運營；並負責需求與可行性評估、開發優先級、進度品質與競品分析。</p></div></li>
         <li class="reveal"><time>2019 — 2020</time><div><h3>Rong Guang Technology · PM 助理</h3><p data-edit-id="exp-rong">需求、UI、排程與測試協作；撰寫五套系統需求文件，協作與管理範圍 9–20 人。</p></div></li>
         <li class="reveal"><time>2018 — 2019</time><div><h3>Marvel Tech. · 主管助理</h3><p data-edit-id="exp-marvel">營運支援、跨部門進度追蹤、內部稽核與主管代理事項。</p></div></li>
       </ol>
+      <div class="education-block reveal" aria-labelledby="education-title">
+        <p class="section-index">EDUCATION</p><h3 id="education-title">教育背景</h3>
+        <div><p><strong>國立澎湖科技大學</strong><span>觀光休閒系</span></p><time>2010—2014</time></div>
+        <div><p><strong>國立嘉義大學</strong><span>觀光休閒管理碩士班（肄業）</span></p><time>2014—2017</time></div>
+      </div>
     </section>
 
-    <section class="contact section-shell" id="contact" aria-labelledby="contact-title">
-      <p class="section-index">05 / CONTACT</p><h2 id="contact-title" data-edit-id="contact-title">需要能把策略推進到落地的<br>遊戲運營負責人？</h2><p data-edit-id="contact-copy">歡迎交流國際市場、棋牌產品、品牌運營與跨部門項目合作。</p>
+    <section class="contact section-shell chapter" id="contact" data-chapter="contact" aria-labelledby="contact-title">
+      <p class="section-index">03 / CONTACT</p><h2 id="contact-title" data-edit-id="contact-title">一起把策略<br>推進到落地。</h2><p data-edit-id="contact-copy">歡迎交流國際市場、棋牌產品、品牌運營與跨部門項目合作。</p>
       <div class="contact-actions"><a class="split-cta light" href="mailto:zero19910918@gmail.com"><span>zero19910918@gmail.com</span><b>↗</b></a><a class="resume-link" href="assets/resume/Chen_Jia_Xian_Global_Game_Operations_ATS.pdf" download>下載 ATS 履歷 ↓</a></div>
     </section>
   </main>

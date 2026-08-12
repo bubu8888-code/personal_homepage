@@ -6,7 +6,7 @@
     "title": "Chen Jia Xian｜全球化遊戲運營・項目負責人",
     "scrollWidth": 1440,
     "clientWidth": 1440,
-    "bodyHeight": 7805,
+    "bodyHeight": 6151,
     "brokenImages": [],
     "resumeLinks": [
       "assets/resume/Chen_Jia_Xian_Global_Game_Operations_visual.pdf",
@@ -16,7 +16,7 @@
     "navVisible": "flex",
     "h1Size": "208px",
     "switchedVideo": true,
-    "editing": true,
+    "editing": false,
     "errors": []
   },
   {
@@ -26,7 +26,7 @@
     "title": "Chen Jia Xian｜全球化遊戲運營・項目負責人",
     "scrollWidth": 390,
     "clientWidth": 390,
-    "bodyHeight": 8364,
+    "bodyHeight": 8515,
     "brokenImages": [],
     "resumeLinks": [
       "assets/resume/Chen_Jia_Xian_Global_Game_Operations_visual.pdf",
@@ -34,9 +34,9 @@
     ],
     "activeVideos": 1,
     "navVisible": "none",
-    "h1Size": "85.8px",
+    "h1Size": "81.9px",
     "switchedVideo": true,
-    "editing": true,
+    "editing": false,
     "errors": []
   }
 ]
