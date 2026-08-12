@@ -26,19 +26,25 @@ function activateVideo(index){
   }
   if(!reduce) videos[index].play().catch(()=>{});
 }
-tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{activateVideo(i);hideHeroIntro();}));
+tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{completeHeroIntro();activateVideo(i);}));
 activateVideo(0);
 
 let introTimer;
 function showHeroIntro(duration=3600){
   if(!hero)return;
+  if(hero.classList.contains('intro-complete'))return;
   hero.classList.add('intro-visible');
   clearTimeout(introTimer);
-  if(!reduce&&duration)introTimer=setTimeout(()=>hero.classList.remove('intro-visible'),duration);
+  if(!reduce&&duration)introTimer=setTimeout(completeHeroIntro,duration);
 }
 function hideHeroIntro(delay=0){
   clearTimeout(introTimer);
   introTimer=setTimeout(()=>hero?.classList.remove('intro-visible'),delay);
+}
+function completeHeroIntro(){
+  clearTimeout(introTimer);
+  hero?.classList.remove('intro-visible');
+  hero?.classList.add('intro-complete');
 }
 if(reduce)hero?.classList.add('intro-visible');
 else{
