@@ -1,4 +1,4 @@
-# Chen Jia Xian Personal Homepage
+# Bernie Personal Homepage
 
 Static personal portfolio built for GitHub Pages. No build step is required.
 
